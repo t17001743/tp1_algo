@@ -1,3 +1,5 @@
-public interface Comparable {
-    int compareTo(Object o);
+public interface Comparable<T> {
+    int compareTo(T o);
+    T swap(T o);
+    T generateRandomly(T o);
 }
