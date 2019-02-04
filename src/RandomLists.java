@@ -18,11 +18,9 @@ public class RandomLists<T extends Comparable<T>>{
         }
     }
 
-
     public int compareTo(T o){
         return 0;
     }
-
 
     public T swap(ArrayList<T> list, int i, int j){
         T tmp;
