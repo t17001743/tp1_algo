@@ -1,16 +1,18 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main<T> {
 
-    static public void bubbleSort(Sequence seq){        // tri à bulles
-        for(int i = seq.getSizeOf(seq); i < 2; i++){
-            for(int j = 1; j < i - 1; j++){
-                if(seq.get(j) > seq.get(j+1)){
-                    seq.swap(seq, j, j+1);
+    static public void bubbleSort(Sequence sequence) {        // tri à bulles
+        for (int i = 0; i < sequence.getSizeOf() - 1; i++) {
+            for (int j = 1; j < i - 1; j++) {
+                if (i > j) {
+                    sequence.swap(i,j);
                 }
             }
         }
     }
+
 
 
     static public void mergeSort(Sequence seq){         // tri par fusion
@@ -37,8 +39,42 @@ public class Main<T> {
     public static void main(String[] args) {
 
         Sequence sequence = new Sequence(0, 10, 11);
+        System.out.println("Liste avant le tri :");
         System.out.println(sequence.list.toString());
         System.out.println("Size of list is " + sequence.getSizeOf());
+
+        System.out.println("\n");
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Choisissez le tri à effectuer :\n 1) Tri à bulles\n 2) Tri par fusion\n 3) Tri rapide (avec la partition dite du drapeau\n 4) Tri par tas\n 5) Tri par base\n");
+        int str = sc.nextInt();
+
+        if(str == 1){
+            bubbleSort(sequence);
+            System.out.println(sequence.list.toString());
+        }
+
+        else if(str == 2){
+            mergeSort(sequence);
+            System.out.println(sequence.list.toString());
+        }
+
+        else if(str == 3){
+            quickSort(sequence);
+            System.out.println(sequence.list.toString());
+        }
+
+        else if(str == 4){
+            heapSort(sequence);
+            System.out.println(sequence.list.toString());
+        }
+
+        else if(str == 2){
+            radixSort(sequence);
+            System.out.println(sequence.list.toString());
+        }
+
+        else System.out.println("Veuillez entrer un nombre correct svp");
 
     }
 }
