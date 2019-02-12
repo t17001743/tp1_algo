@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Main<T> {
 
-   static public void bubbleSort(Sequence seq){        // tri à bulles
+    static public void bubbleSort(Sequence seq){        // tri à bulles
         for(int i = seq.getSizeOf(seq); i < 2; i++){
             for(int j = 1; j < i - 1; j++){
                 if(seq.get(j) > seq.get(j+1)){
@@ -19,7 +19,8 @@ public class Main<T> {
 
 
     static public void quickSort(Sequence seq){         // tri rapide avec la partition dite du drapeau
-
+        int g = 0;
+        int d = 0;
     }
 
 
@@ -35,8 +36,9 @@ public class Main<T> {
 
     public static void main(String[] args) {
 
-        Sequence list = new Sequence(0, 10, 11);
-        System.out.println("Size of list is " + list.getSizeOf(list));
+        Sequence sequence = new Sequence(0, 10, 11);
+        System.out.println(sequence.list.toString());
+        System.out.println("Size of list is " + sequence.getSizeOf());
 
     }
 }

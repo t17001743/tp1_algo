@@ -13,7 +13,6 @@ public class Sequence<T extends Comparable<T>>{
         this.list = new ArrayList<T>(length);
         Random rand = new Random();
         for(int index = 0; index < length; index++){
-            //T r = (T) Integer.valueOf(rand.nextInt(max));
             this.list.add((T) Integer.valueOf(rand.nextInt(max)));
         }
     }
@@ -28,7 +27,7 @@ public class Sequence<T extends Comparable<T>>{
         return this.list.get(i);
     }
 
-    public int getSizeOf(Sequence list){
+    public int getSizeOf(){
         return this.list.size();
     }
 
