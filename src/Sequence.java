@@ -24,8 +24,12 @@ public class Sequence<T extends Comparable<T>>{
             list.set(j, tmp);
     }
 
+    public T get(int i){
+        return this.list.get(i);
+    }
+
     public int getSizeOf(Sequence list){
-        return list.size();
+        return this.list.size();
     }
 
 }
