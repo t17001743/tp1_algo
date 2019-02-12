@@ -32,3 +32,4 @@ public class Sequence<T extends Comparable<T>>{
     }
 
 }
+
