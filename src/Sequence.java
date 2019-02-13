@@ -27,9 +27,12 @@ public class Sequence<T extends Comparable<T>>{
         return list.get(i);
     }
 
+    public T set(int i, T elt){
+        return list.set(i, elt);
+    }
+
     public int getSizeOf(){
         return list.size();
     }
-
 }
 

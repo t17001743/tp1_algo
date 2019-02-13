@@ -13,23 +13,39 @@ public class Main<T> {
         }
 
 
-    static public void mergeSort(Sequence seq){                     // tri par fusion
+    static public void mergeSort(Sequence sequence){                     // tri par fusion
+        if(sequence.getSizeOf() > 1){
+            Sequence s1 = new Sequence();
+            Sequence s2 = new Sequence();
+
+            while(s1.getSizeOf() != 1 && s2.getSizeOf() != 1){
+                for(int i = 0; i < (sequence.getSizeOf()/2)-1; i++){
+                    for(int j = sequence.getSizeOf()/2; j < sequence.getSizeOf(); j++){
+                        s1.set(i, sequence.get(i));
+                        s2.set(j, sequence.get(j));
+                    }
+                }
+            }
+
+
+
+        }
 
     }
 
 
-    static public void quickSort(Sequence seq){                     // tri rapide avec la partition dite du drapeau
+    static public void quickSort(Sequence sequence){                     // tri rapide avec la partition dite du drapeau
         int g = 0;
         int d = 0;
     }
 
 
-    static public void heapSort(Sequence seq){                      // tri par tas
+    static public void heapSort(Sequence sequence){                      // tri par tas
 
     }
 
 
-    static public void radixSort(Sequence seq){                     // tri par base
+    static public void radixSort(Sequence sequence){                     // tri par base
 
     }
 
