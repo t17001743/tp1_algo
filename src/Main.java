@@ -47,37 +47,39 @@ public class Main<T> {
         System.out.println("Choisissez le tri à effectuer :\n 1) Tri à bulles\n 2) Tri par fusion\n 3) Tri rapide (avec la partition dite du drapeau)\n 4) Tri par tas\n 5) Tri par base\n");
         int str = sc.nextInt();
 
-        if(str == 1){
-            bubbleSort(sequence);
-            System.out.println("Liste après le tri :");
-            System.out.println(sequence.list.toString());
+        switch(str){
+            case 1:
+                bubbleSort(sequence);
+                System.out.println("Liste après le tri à bulles :");
+                System.out.println(sequence.list.toString());
+                break;
+
+            case 2:
+                mergeSort(sequence);
+                System.out.println("Liste après le tri par fusion :");
+                System.out.println(sequence.list.toString());
+                break;
+
+            case 3:
+                quickSort(sequence);
+                System.out.println("Liste après le tri rapide :");
+                System.out.println(sequence.list.toString());
+                break;
+
+            case 4:
+                heapSort(sequence);
+                System.out.println("Liste après le tri par tas :");
+                System.out.println(sequence.list.toString());
+                break;
+
+            case 5 :
+                radixSort(sequence);
+                System.out.println("Liste après le tri par base:");
+                System.out.println(sequence.list.toString());
+                break;
+
+            default:
+                break;
         }
-
-        else if(str == 2){
-            mergeSort(sequence);
-            System.out.println("Liste après le tri :");
-            System.out.println(sequence.list.toString());
-        }
-
-        else if(str == 3){
-            quickSort(sequence);
-            System.out.println("Liste après le tri :");
-            System.out.println(sequence.list.toString());
-        }
-
-        else if(str == 4){
-            heapSort(sequence);
-            System.out.println("Liste après le tri :");
-            System.out.println(sequence.list.toString());
-        }
-
-        else if(str == 5){
-            radixSort(sequence);
-            System.out.println("Liste après le tri :");
-            System.out.println(sequence.list.toString());
-        }
-
-        else System.out.println("Veuillez entrer un nombre correct svp");
-
     }
 }
