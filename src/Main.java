@@ -1,4 +1,7 @@
+import java.util.Random;
 import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Main<T> {
 
@@ -13,16 +16,15 @@ public class Main<T> {
         }
 
 
-    static public void mergeSort(Sequence sequence){                     // tri par fusion
-        if(sequence.getSizeOf() > 1){
-            Sequence s1 = new Sequence();
-            Sequence s2 = new Sequence();
-
-            while(s1.getSizeOf() != 1 && s2.getSizeOf() != 1){
-                for(int i = 0; i < (sequence.getSizeOf()/2)-1; i++){
-                    for(int j = sequence.getSizeOf()/2; j < sequence.getSizeOf(); j++){
-                        s1.set(i, sequence.get(i));
-                        s2.set(j, sequence.get(j));
+    static public void mergeSort(LinkedList<Integer> list){                     // tri par fusion
+        if(list.size() > 1){
+            LinkedList<Integer> list1 = new LinkedList<Integer>();
+            LinkedList<Integer> list2 = new LinkedList<Integer>();
+            while(list1.size() != 1 && list2.size() != 1){
+                for(int i = 0; i < (list.size()/2)-1; i++){
+                    for(int j = list.size()/2; j < list.size(); j++){
+                        list1.set(i, list.get(i));
+                        list2.set(j, list.get(j));
                     }
                 }
             }
@@ -53,6 +55,13 @@ public class Main<T> {
     public static void main(String[] args) {
 
         Sequence sequence = new Sequence(0, 9, 10);
+        LinkedList<Integer> linkedList = new LinkedList<Integer>();
+
+        Random rand = new Random();
+        for(int index = 0; index < linkedList.size(); index++){
+            linkedList.add(rand.nextInt(10));
+        }
+
         System.out.println("Liste avant le tri :");
         System.out.println(sequence.list.toString());
         System.out.println("Size of list is " + sequence.getSizeOf());
@@ -71,7 +80,7 @@ public class Main<T> {
                 break;
 
             case 2:
-                mergeSort(sequence);
+                mergeSort(linkedList);
                 System.out.println("Liste après le tri par fusion :");
                 System.out.println(sequence.list.toString());
                 break;
