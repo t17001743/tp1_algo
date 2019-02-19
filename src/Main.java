@@ -1,23 +1,24 @@
 import java.util.Random;
 import java.util.Scanner;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Main<T> {
 
     static public void bubbleSort(Sequence sequence) {              // tri à bulles
-            for (int i = sequence.getSizeOf() - 1; i >= 1; i--) {
-                for (int j = 0; j <= i - 1; j++) {
-                    if (sequence.get(j).compareTo(sequence.get(j+1))>0) {
+        for (int i = sequence.getSizeOf() - 1; i >= 1; i--) {
+            for (int j = 0; j <= i - 1; j++) {
+                if (sequence.get(j).compareTo(sequence.get(j+1))>0) {
                         sequence.swap(j, j+1);
-                    }
                 }
             }
         }
+    }
 
 
     static public void mergeSort(LinkedList<Integer> list){                     // tri par fusion
         if(list.size() > 1){
+            System.out.println("oui");
             LinkedList<Integer> list1 = new LinkedList<Integer>();
             LinkedList<Integer> list2 = new LinkedList<Integer>();
             while(list1.size() != 1 && list2.size() != 1){
@@ -27,18 +28,35 @@ public class Main<T> {
                         list2.set(j, list.get(j));
                     }
                 }
+                mergeSort(list1);
+                mergeSort(list2);
             }
-
-
-
+            if(list1.getFirst() <= list2.getFirst()){
+                list1.addAll(list2);
+            }
         }
-
     }
 
 
     static public void quickSort(Sequence sequence){                     // tri rapide avec la partition dite du drapeau
-        int g = 0;
-        int d = 0;
+        int firstEqual = 0;   //premier égal
+        int firstTaller = 0;   //premier plus grand
+        for(int i = sequence.getSizeOf() - 1; i >= 1; i--){
+            for(int j = 0; j <= i - 1; j++){
+                if(sequence.get(i) == sequence){
+                    i++;
+                }
+                else if(sequence.get(i).compareTo(sequence.get(i)) > 0){
+                    sequence.swap(i, firstTaller - 1);
+                    firstTaller--;
+                }
+                else if(sequence.get(i).compareTo(sequence.get(i)) < 0){
+                    sequence.swap(firstEqual, i);
+                    firstEqual++;
+                    i++;
+                }
+            }
+        }
     }
 
 
@@ -48,7 +66,25 @@ public class Main<T> {
 
 
     static public void radixSort(Sequence sequence){                     // tri par base
+        ArrayList[] digits = new ArrayList[10];
+        int numberOfDigits = 0;
 
+        for(int i = 0; i < sequence.getSizeOf(); i++){
+            numberOfDigits = String.valueOf(sequence.get(i)).length();      //comptage du nombre de chiffre dans chaque nombre
+        }
+
+        for(int j = 0; j < digits.length; j++){
+            digits[j] = new ArrayList();
+        }
+
+        /*int power = 1;
+        for(int numChiffre = 0; numChiffre < numberOfDigits; numChiffre++){
+            for(int index = 0; index < sequence.getSizeOf(); index++){
+                //digits[(sequence.get(index)/((int)Math.pow(10, numChiffre)))%10].add(new Integer(sequence.get(index)));
+                digits[sequence.get(index)/power)%10].add(sequence.get(index));
+            }
+            sequence.clear();
+        }*/
     }
 
 
@@ -64,7 +100,7 @@ public class Main<T> {
 
         System.out.println("Liste avant le tri :");
         System.out.println(sequence.list.toString());
-        System.out.println("Size of list is " + sequence.getSizeOf());
+        System.out.println("La taille de la liste est " + sequence.getSizeOf());
 
         System.out.println("\n");
 
