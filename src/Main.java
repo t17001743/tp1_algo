@@ -18,7 +18,6 @@ public class Main<T> {
 
     static public void mergeSort(LinkedList<Integer> list){                     // tri par fusion
         if(list.size() > 1){
-            System.out.println("oui");
             LinkedList<Integer> list1 = new LinkedList<Integer>();
             LinkedList<Integer> list2 = new LinkedList<Integer>();
             while(list1.size() != 1 && list2.size() != 1){
@@ -94,8 +93,8 @@ public class Main<T> {
         LinkedList<Integer> linkedList = new LinkedList<Integer>();
 
         Random rand = new Random();
-        for(int index = 0; index < linkedList.size(); index++){
-            linkedList.add(rand.nextInt(10));
+        for(int index = 0; index < 9; index++){
+            linkedList.add(rand.nextInt(9));
         }
 
         System.out.println("Liste avant le tri :");
@@ -118,7 +117,7 @@ public class Main<T> {
             case 2:
                 mergeSort(linkedList);
                 System.out.println("Liste après le tri par fusion :");
-                System.out.println(sequence.list.toString());
+                System.out.println(linkedList.toString());
                 break;
 
             case 3:
