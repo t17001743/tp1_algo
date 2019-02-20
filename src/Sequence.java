@@ -1,12 +1,10 @@
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 public class Sequence<T extends Comparable<T>>{
 
     ArrayList<T> list;
-    LinkedList<T> linkedList;
 
     public Sequence(){
         list = null;
@@ -17,7 +15,7 @@ public class Sequence<T extends Comparable<T>>{
         Random rand = new Random();
         for(int index = 0; index < length; index++){
             list.add((T) Integer.valueOf(rand.nextInt(max)));
-            }
+        }
     }
 
 
