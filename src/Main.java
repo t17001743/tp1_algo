@@ -1,7 +1,4 @@
-import java.util.Random;
-import java.util.Scanner;
-import java.util.LinkedList;
-import java.util.ArrayList;
+import java.util.*;
 
 
 public class Main<T> {
@@ -26,6 +23,7 @@ public class Main<T> {
         for (int i = 0; i < list.size() / 2; i++) {
             list1.add(list.get(i));
         }
+        Collections.sort(list1);
         return list1;
     }
 
@@ -36,12 +34,52 @@ public class Main<T> {
         for (int i = list.size() / 2; i < list.size(); i++) {
             list2.add(list.get(i));
         }
+        Collections.sort(list2);
         return list2;
     }
 
 
     static public LinkedList<Integer> mergeTwoLists(LinkedList<Integer> list1, LinkedList<Integer> list2){
         LinkedList<Integer> newList = new LinkedList<>();
+
+        while(list1.size() > 1 && list2.size() > 1){
+            for(int i = 0; i < list1.size()-1; i++){
+                for(int j = 0; j < list2.size()-1; j++){
+                    if(list1.get(i) < list2.get(j)){
+                        newList.add(list1.get(i));
+                    }
+                    else{
+                        newList.add(list2.get(j));
+                    }
+                }
+            }
+            list1.clear();
+            list2.clear();
+        }
+        return newList;
+
+        /*while(list1 != null && list2 != null){
+            if(list1.getFirst() <= list2.getFirst()){
+                newList.addLast(list1.removeFirst());
+            }
+            else{
+                newList.addLast(list2.removeFirst());
+            }
+        }
+
+        while(list1 != null){
+            newList.addLast(list1.removeFirst());
+        }
+
+        while(list2 != null){
+            newList.addLast(list2.removeFirst());
+        }
+
+        return newList; */
+
+
+
+        /*LinkedList<Integer> newList = new LinkedList<>();
 
         for(int i = 0; i < list1.size()-1; i++) {
             if(list1.get(i) > list1.get(i+1)){
@@ -64,7 +102,7 @@ public class Main<T> {
                 }
             }
         }
-        return newList;
+        return newList; */
     }
 
 
@@ -73,6 +111,20 @@ public class Main<T> {
         if(list.size() > 1) {
             LinkedList<Integer> list1 = splitInAFirstList(list);
             LinkedList<Integer> list2 = splitInASecondList(list);
+
+            /*for(int i = 0; i < list1.size()-1; i++){
+                while(list1.get(i) < list1.get(i+1)){
+                    if(list.get(i) > list.get(i+1)){
+                        int tmp = list.get(i);
+                        list.set(i, list.get(i+1));
+                        list.set(i+1, tmp);
+                    }
+                }
+            }*/
+
+            for(int j = 0; j < list2.size()-1; j++){
+
+                }
 
             list1 = mergeSort(list1);
             list2 = mergeSort(list2);
@@ -110,7 +162,11 @@ public class Main<T> {
     //*****************************************************************************************************************
 
     static public void heapSort(Sequence sequence){                      // tri par tas
+        Sequence newSequence = new Sequence();
+        for (int i = 0; i < sequence.getSizeOf() - 1; i++) {
+            newSequence.set(i, sequence.get(i));
 
+        }
     }
 
     //*****************************************************************************************************************
@@ -159,6 +215,7 @@ public class Main<T> {
         LinkedList<Integer> mergedLists = new LinkedList<Integer>();
         mergedLists = mergeTwoLists(listA, listB);
         System.out.println(mergedLists.toString());
+
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Choisissez le tri à effectuer :\n 1) Tri à bulles\n 2) Tri par fusion\n 3) Tri rapide (avec la partition dite du drapeau)\n 4) Tri par tas\n 5) Tri par base\n");
