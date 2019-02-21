@@ -47,9 +47,11 @@ public class Main<T> {
                 for(int j = 0; j < list2.size()-1; j++){
                     if(list1.get(i) < list2.get(j)){
                         newList.add(list1.get(i));
+                        list1.remove(i);
                     }
                     else{
                         newList.add(list2.get(j));
+                        list2.remove(j);
                     }
                 }
             }
@@ -57,52 +59,6 @@ public class Main<T> {
             list2.clear();
         }
         return newList;
-
-        /*while(list1 != null && list2 != null){
-            if(list1.getFirst() <= list2.getFirst()){
-                newList.addLast(list1.removeFirst());
-            }
-            else{
-                newList.addLast(list2.removeFirst());
-            }
-        }
-
-        while(list1 != null){
-            newList.addLast(list1.removeFirst());
-        }
-
-        while(list2 != null){
-            newList.addLast(list2.removeFirst());
-        }
-
-        return newList; */
-
-
-
-        /*LinkedList<Integer> newList = new LinkedList<>();
-
-        for(int i = 0; i < list1.size()-1; i++) {
-            if(list1.get(i) > list1.get(i+1)){
-
-            }
-        }
-
-        int min = list1.get(0);
-        for(int i = 0; i < list1.size()-1; i++){
-            for(int j = 0; j < list2.size()-1; j++){
-                if(list1.get(i) < min) {
-                    newList.add(list1.get(i));
-                    min = list1.get(i);
-                    list1.remove(list1.get(i));
-                }
-                else if(list2.get(j) < min){
-                    newList.add(list2.get(j));
-                    min = list2.get(j);
-                    list2.remove(list2.get(j));
-                }
-            }
-        }
-        return newList; */
     }
 
 
@@ -111,20 +67,6 @@ public class Main<T> {
         if(list.size() > 1) {
             LinkedList<Integer> list1 = splitInAFirstList(list);
             LinkedList<Integer> list2 = splitInASecondList(list);
-
-            /*for(int i = 0; i < list1.size()-1; i++){
-                while(list1.get(i) < list1.get(i+1)){
-                    if(list.get(i) > list.get(i+1)){
-                        int tmp = list.get(i);
-                        list.set(i, list.get(i+1));
-                        list.set(i+1, tmp);
-                    }
-                }
-            }*/
-
-            for(int j = 0; j < list2.size()-1; j++){
-
-                }
 
             list1 = mergeSort(list1);
             list2 = mergeSort(list2);
