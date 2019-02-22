@@ -69,7 +69,6 @@ public class Main<T> {
 
 
    static public LinkedList<Integer> mergeSort(LinkedList<Integer> list) {                     // tri par fusion
-        System.out.println(list.size());
         if(list.size() > 1) {
             LinkedList<Integer> list1 = splitInAFirstList(list);
             LinkedList<Integer> list2 = splitInASecondList(list);
@@ -155,14 +154,14 @@ public class Main<T> {
 
         LinkedList<Integer> listAfterSort = new LinkedList<Integer>();
 
-        System.out.println(linkedList.toString());
+        /*System.out.println(linkedList.toString());
         LinkedList<Integer> listA = splitInAFirstList(linkedList);
         System.out.println(listA.toString());
         LinkedList<Integer> listB = splitInASecondList(linkedList);
         System.out.println(listB.toString());
         LinkedList<Integer> mergedLists = new LinkedList<Integer>();
         mergedLists = mergeTwoLists(listA, listB);
-        System.out.println(mergedLists.toString());
+        System.out.println(mergedLists.toString());*/
 
 
         Scanner sc = new Scanner(System.in);
