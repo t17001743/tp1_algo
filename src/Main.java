@@ -41,23 +41,29 @@ public class Main<T> {
 
     static public LinkedList<Integer> mergeTwoLists(LinkedList<Integer> list1, LinkedList<Integer> list2){
         LinkedList<Integer> newList = new LinkedList<>();
+        int i = 0, j = 0;
 
-        while(list1.size() > 1 && list2.size() > 1){
-            for(int i = 0; i < list1.size()-1; i++){
-                for(int j = 0; j < list2.size()-1; j++){
-                    if(list1.get(i) < list2.get(j)){
-                        newList.add(list1.get(i));
-                        list1.remove(i);
-                    }
-                    else{
-                        newList.add(list2.get(j));
-                        list2.remove(j);
-                    }
-                }
+        while(i < list1.size() && j < list2.size()){
+            if(list1.get(i) < list2.get(j)){
+                newList.add(list1.get(i));
+                i++;
             }
-            list1.clear();
-            list2.clear();
+            else{
+                newList.add(list2.get(j));
+                j++;
+            }
         }
+
+        while(i <= list1.size()-1){
+            newList.add(list1.get(i));
+            i++;
+        }
+
+        while(j <= list2.size()-1){
+            newList.add(list2.get(j));
+            j++;
+        }
+
         return newList;
     }
 
