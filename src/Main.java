@@ -85,24 +85,25 @@ public class Main<T> {
 
     //*****************************************************************************************************************
 
-    static public void quickSort(Sequence sequence){                     // tri rapide avec la partition dite du drapeau
-        int firstEqual = 0;   //premier égal
-        int firstTaller = 0;   //premier plus grand
-        for(int i = sequence.getSizeOf() - 1; i >= 1; i--){
-            for(int j = 0; j <= i - 1; j++){
-                if(sequence.get(i) == sequence.get(j)){
-                    i++;
+    static public void quickSort(Sequence sequence, int g, int d){                     // tri rapide avec la partition dite du drapeau
+        if(g < d){
+            int a = g, b = d;
+            int v = (int)sequence.get((a+b)/2);
+            while(a <= b){
+                while(sequence.get(a).compareTo(v) < 0){
+                    a++;
                 }
-                else if(sequence.get(i).compareTo(sequence.get(i)) > 0){
-                    sequence.swap(i, firstTaller - 1);
-                    firstTaller--;
+                while(sequence.get(b).compareTo(v) > 0){
+                    b--;
                 }
-                else if(sequence.get(i).compareTo(sequence.get(i)) < 0){
-                    sequence.swap(firstEqual, i);
-                    firstEqual++;
-                    i++;
+                if(a <= b){
+                    sequence.swap(a, b);
+                    a++;
+                    b--;
                 }
             }
+            quickSort(sequence, g, b);
+            quickSort(sequence, a, d);
         }
     }
 
@@ -194,7 +195,7 @@ public class Main<T> {
                 System.out.println(sequence.list.toString());
                 System.out.println("La taille de la liste est " + sequence.getSizeOf());
                 System.out.println("\n");
-                quickSort(sequence);
+                quickSort(sequence, 0, 9);
                 System.out.println("Liste après le tri rapide :");
                 System.out.println(sequence.list.toString());
                 break;
