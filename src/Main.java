@@ -109,13 +109,31 @@ public class Main<T> {
 
     //*****************************************************************************************************************
 
-    static public void heapSort(Sequence sequence){                      // tri par tas
-        Sequence newSequence = new Sequence();
-        for (int i = 0; i < sequence.getSizeOf() - 1; i++) {
-            newSequence.set(i, sequence.get(i));
+    static public void heapSort(Sequence sequence, int size, int root){                      // tri par tas
 
+        int min = 0;          //recherche du minimum de la liste initiale
+        for (int i = 0; i < size; i++){
+            if((int)sequence.get(i) < min){
+                min = (int)sequence.get(i);
+            }
+        }
+
+        root = min;
+        System.out.println(root);
+        int largest = root, leftChild = 2*root + 1, rightChild = 2*root + 2;
+
+        if (leftChild < size && sequence.get(leftChild).compareTo(sequence.get(largest)) > 0)
+            largest = leftChild;
+
+        if (rightChild < size && sequence.get(rightChild).compareTo(sequence.get(largest)) > 0)
+            largest = rightChild;
+
+        if (largest != root){
+            sequence.swap((int)(sequence.get(root)), (int)sequence.get(largest));
+            heapSort(sequence, size, largest);
         }
     }
+
 
     //*****************************************************************************************************************
 
@@ -154,16 +172,6 @@ public class Main<T> {
         }
 
         LinkedList<Integer> listAfterSort = new LinkedList<Integer>();
-
-        /*System.out.println(linkedList.toString());
-        LinkedList<Integer> listA = splitInAFirstList(linkedList);
-        System.out.println(listA.toString());
-        LinkedList<Integer> listB = splitInASecondList(linkedList);
-        System.out.println(listB.toString());
-        LinkedList<Integer> mergedLists = new LinkedList<Integer>();
-        mergedLists = mergeTwoLists(listA, listB);
-        System.out.println(mergedLists.toString());*/
-
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Choisissez le tri à effectuer :\n 1) Tri à bulles\n 2) Tri par fusion\n 3) Tri rapide (avec la partition dite du drapeau)\n 4) Tri par tas\n 5) Tri par base\n");
@@ -205,7 +213,7 @@ public class Main<T> {
                 System.out.println(sequence.list.toString());
                 System.out.println("La taille de la liste est " + sequence.getSizeOf());
                 System.out.println("\n");
-                heapSort(sequence);
+                heapSort(sequence, 10, 0);
                 System.out.println("Liste après le tri par tas :");
                 System.out.println(sequence.list.toString());
                 break;
