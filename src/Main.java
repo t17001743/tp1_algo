@@ -15,6 +15,7 @@ public class Main<T> {
         }
     }
 
+
     //*****************************************************************************************************************
 
     static public LinkedList<Integer> splitInAFirstList(LinkedList<Integer> list){
@@ -23,7 +24,6 @@ public class Main<T> {
         for (int i = 0; i < list.size() / 2; i++) {
             list1.add(list.get(i));
         }
-        Collections.sort(list1);
         return list1;
     }
 
@@ -34,7 +34,6 @@ public class Main<T> {
         for (int i = list.size() / 2; i < list.size(); i++) {
             list2.add(list.get(i));
         }
-        Collections.sort(list2);
         return list2;
     }
 
@@ -83,6 +82,7 @@ public class Main<T> {
         return list;
     }
 
+
     //*****************************************************************************************************************
 
     static public void quickSort(Sequence sequence, int g, int d){                     // tri rapide avec la partition dite du drapeau
@@ -107,31 +107,53 @@ public class Main<T> {
         }
     }
 
+
     //*****************************************************************************************************************
+
+    static public void heap(Sequence sequence, int node, int size){
+        int child = 2*node + 1;
+
+        if(child < size){
+            if((child+1<size) && (sequence.get(child).compareTo(sequence.get(child+1)) < 0)){
+                child++;
+            }
+            if(sequence.get(node).compareTo(sequence.get(child)) < 0){
+                sequence.swap((int)sequence.get(node), (int)sequence.get(child));
+                heap(sequence,child,size);
+            }
+        }
+    }
+
 
     static public void heapSort(Sequence sequence, int size, int root){                      // tri par tas
 
-        int min = 0;          //recherche du minimum de la liste initiale
+        for(int i = sequence.getSizeOf(); i >= 0; i--)
+            heap(sequence, i, sequence.getSizeOf());
+
+        for(int j = sequence.getSizeOf()-1; j >= 1; j--){
+            sequence.swap((int)sequence.get(j), (int)sequence.get(0));
+            heap(sequence, 0, j-1);
+        }
+
+        /*int max = (int)sequence.get(0);          //recherche du maximum de la liste initiale
         for (int i = 0; i < size; i++){
-            if((int)sequence.get(i) < min){
-                min = (int)sequence.get(i);
+            if((int)sequence.get(i) > max){
+                max = (int)sequence.get(i);
             }
         }
 
-        root = min;
-        System.out.println(root);
-        int largest = root, leftChild = 2*root + 1, rightChild = 2*root + 2;
+        root = max;
+        System.out.println("La racine est " + root);
+        int biggest = root, leftChild = 2*root + 1, rightChild = 2*root + 2;
 
-        if (leftChild < size && sequence.get(leftChild).compareTo(sequence.get(largest)) > 0)
-            largest = leftChild;
+        if (sequence.get(leftChild).compareTo(sequence.get(biggest)) < 0) biggest = leftChild;
 
-        if (rightChild < size && sequence.get(rightChild).compareTo(sequence.get(largest)) > 0)
-            largest = rightChild;
+        if (sequence.get(rightChild).compareTo(sequence.get(biggest)) < 0) biggest = rightChild;
 
-        if (largest != root){
-            sequence.swap((int)(sequence.get(root)), (int)sequence.get(largest));
-            heapSort(sequence, size, largest);
+        if (biggest != root){
+            sequence.swap((int)(sequence.get(root)), (int)sequence.get(biggest));
         }
+        heapSort(sequence, size, biggest); */
     }
 
 
@@ -158,6 +180,7 @@ public class Main<T> {
             sequence.clear();
         }*/
     }
+
 
     //*****************************************************************************************************************
 
